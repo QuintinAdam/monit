@@ -36,6 +36,14 @@ module Monit
       @services = []
     end
 
+    def self.current
+      @current ||= Status.new
+    end
+
+    def self.current=(client)
+      @current = client
+    end
+
     # Construct the URL
     def url
       url_params = { :host => @host, :port => @port, :path => "/_status", :query => "format=xml" }
